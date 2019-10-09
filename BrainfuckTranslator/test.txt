@@ -1,0 +1,5 @@
+﻿program Hello;
+begin
+  a := '2';
+  writeln(a);
+end.

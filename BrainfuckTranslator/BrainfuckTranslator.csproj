@@ -6,8 +6,25 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Antlr" Version="3.5.0.2" />
+    <PackageReference Include="Antlr4.Runtime.Standard" Version="4.7.2" />
     <PackageReference Include="Ninject" Version="3.3.4" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="antlr\antlr-4.7.2-complete.jar">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="test.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="csharp\" />
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="java -jar D:\Dev\BrainfuckTranslator\BrainfuckTranslator\antlr\antlr-4.7.2-complete.jar -Dlanguage=CSharp -o csharp pascal.g4" />
+  </Target>
 
 </Project>
